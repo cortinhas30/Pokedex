@@ -1,26 +1,26 @@
+/* eslint-disable prettier/prettier */
 import React, {type PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
-  View,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { store } from './src/app/store';
+import Counter from './src/components/Counter';
+import ButtonRedux from './src/components/ButtonRedux';
 
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView>
-      <Text>hello world</Text>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView>
+        <Counter />
+        <ButtonRedux />
+      </SafeAreaView>
+    </Provider>
   );
 };
 
